@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin name="bankwiretransfer">
+	<title>Wire Transfer</title>
+	<summary>Wire Transfer integration. Allows to proceed wire transfer payments.</summary>
+	<author>Intelliants LLC</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>1.0.0</version>
+	<date>2015-12-23</date>
+	<compatibility>4.0.3</compatibility>
+	<category>payments</category>
+
+	<config group="financial" type="divider">Wire Transfer</config>
+	<config group="financial" name="wiretransfer_bank_details" type="textarea" description="Bank details">Your bank details here</config>
+
+	<config group="email_templates" type="divider" description="Bank Wire Transfer"><![CDATA[]]></config>
+	<config group="email_templates" type="radio" name="bankwiretransfer_payment_details" values="1,0" description="Payment details">1</config>
+	<config group="email_templates" type="hidden" name="bankwiretransfer_payment_details_subject">Wire transfer details for {%SITE_NAME%}</config>
+	<config group="email_templates" type="hidden" name="bankwiretransfer_payment_details_body" values="bank_details|Bank Details">
+		<![CDATA[
+<p>Greetings,</p>
+
+<p><strong>Please make payment to the following account:</strong></p>
+<table>
+<tr>
+	<td>{%BANK_DETAILS%}</td>
+</tr>
+</table>
+		]]>
+	</config>
+
+	<hooks>
+		<hook name="paymentButtons" type="smarty" page_type="front" filename="plugins/bankwiretransfer/templates/buttons.tpl"><![CDATA[]]></hook>
+		<hook name="smartyPostPurchase" type="smarty" page_type="front" pages="pay">
+			<![CDATA[
+<p>{lang key='your_bank_payment_details'}</p>
+{if 'bankwiretransfer' == $gateway}
+<pre>{$core.config.wiretransfer_bank_details}</pre>
+{/if}
+<p>{lang key='sent_as_email_too'}</p>
+			]]>
+		</hook>
+	</hooks>
+
+	<phrases>
+		<phrase category="frontend" key="sent_as_email_too">These details have also been emailed to you.</phrase>
+		<phrase category="frontend" key="your_bank_payment_details">Payment is to be arranged to the following bank account details:</phrase>
+	</phrases>
+</plugin>
