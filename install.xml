@@ -29,7 +29,7 @@
 	</config>
 
 	<hooks>
-		<hook name="paymentButtons" type="smarty" page_type="front" filename="plugins/bankwiretransfer/templates/buttons.tpl"><![CDATA[]]></hook>
+		<hook name="paymentButtons" type="smarty" page_type="front" filename="buttons"><![CDATA[]]></hook>
 		<hook name="smartyPostPurchase" type="smarty" page_type="front" pages="pay">
 			<![CDATA[
 <p>{lang key='your_bank_payment_details'}</p>
