@@ -4,7 +4,7 @@
 	<summary>Wire Transfer integration. Allows to proceed wire transfer payments.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>1.0.1</version>
+	<version>1.0.0</version>
 	<date>2016-01-22</date>
 	<compatibility>4.0.3</compatibility>
 	<category>payments</category>
