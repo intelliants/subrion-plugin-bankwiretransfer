@@ -32,11 +32,11 @@
 		<hook name="paymentButtons" type="smarty" page_type="front" filename="button"><![CDATA[]]></hook>
 		<hook name="smartyPostPurchase" type="smarty" page_type="front" pages="pay">
 			<![CDATA[
-<p>{lang key='your_bank_payment_details'}</p>
 {if 'bankwiretransfer' == $gateway}
-<pre>{$core.config.wiretransfer_bank_details}</pre>
+	<p>{lang key='your_bank_payment_details'}</p>
+	<pre>{$core.config.wiretransfer_bank_details}</pre>
+	<p>{lang key='sent_as_email_too'}</p>
 {/if}
-<p>{lang key='sent_as_email_too'}</p>
 			]]>
 		</hook>
 	</hooks>
