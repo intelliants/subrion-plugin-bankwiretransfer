@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin name="bankwiretransfer">
+<module type="plugin" name="bankwiretransfer">
 	<title>Bank Wire Transfer</title>
 	<summary>Wire Transfer integration. Allows to proceed wire transfer payments.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>1.0.0</version>
-	<date>2016-01-22</date>
-	<compatibility>4.0.3</compatibility>
+	<version>1.1.0</version>
+	<date>2017-03-13</date>
 	<category>payments</category>
+	<compatibility>4.1</compatibility>
 
 	<config group="financial" type="divider">Wire Transfer</config>
 	<config group="financial" name="wiretransfer_bank_details" type="textarea" description="Bank details">Your bank details here</config>
@@ -45,4 +45,4 @@
 		<phrase category="frontend" key="sent_as_email_too">These details have also been emailed to you.</phrase>
 		<phrase category="frontend" key="your_bank_payment_details">Payment is to be arranged to the following bank account details:</phrase>
 	</phrases>
-</plugin>
+</module>
