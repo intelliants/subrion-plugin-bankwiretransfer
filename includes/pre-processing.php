@@ -24,15 +24,19 @@
  *
  ******************************************************************************/
 
-if ($iaCore->get('bankwiretransfer_payment_details'))
-{
-	$member = iaUsers::getIdentity(true);
+if ($iaCore->get('bankwiretransfer_payment_details')) {
+    $iaMailer = $iaCore->factory('mailer');
 
-	$iaMailer = $iaCore->factory('mailer');
+    if ($iaMailer->loadTemplate('bankwiretransfer_payment_details')) {
+        $bankDetails = $iaCore->get('wiretransfer_bank_details');
 
-	$iaMailer->loadTemplate('bankwiretransfer_payment_details');
-	$iaMailer->addAddress($member['email'], $member['fullname']);
-	$iaMailer->setReplacements('bank_details', $iaCore->get('wiretransfer_bank_details'));
+        // needs some conversions before inserting to email
+        $bankDetails = iaSanitize::html($bankDetails);
+        $bankDetails = nl2br($bankDetails);
 
-	$iaMailer->send();
+        $iaMailer->addAddressByMember(iaUsers::getIdentity(true));
+        $iaMailer->setReplacements('bankDetails', $bankDetails, false);
+
+        $iaMailer->send();
+    }
 }
