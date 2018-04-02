@@ -32,7 +32,7 @@
     </emails>
 
     <hooks>
-        <hook name="paymentButtons" type="smarty" page_type="front" filename="button"><![CDATA[]]></hook>
+        <hook name="paymentButtons" type="smarty" page_type="front" filename="button.tpl"><![CDATA[]]></hook>
         <hook name="smartyPostPurchase" type="smarty" page_type="front" pages="pay">
             <![CDATA[
 {if 'bankwiretransfer' == $gateway}
